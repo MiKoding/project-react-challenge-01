@@ -7,9 +7,10 @@
     font-weight: 700;
     line-height: 200%;
 }
-
+.logo{
+    display: flex;
+}
 .header img{
-    height: 1.50rem;
     margin-right:0.3rem;
 }
 

@@ -1,0 +1,30 @@
+.textarea{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+.textarea textarea{
+    width: 80%;
+    text-align: center;
+    background: var(--gray-500);
+    border: solid var(--gray-700);
+    resize: none;
+    padding: 1rem;
+    border-radius: 6px;
+    color: var(--gray-100);
+    line-height: 0.2;
+   
+}
+
+.textarea button{
+    display: flex;
+    height: 2.5rem;
+    border-radius: 6px;
+    border: none;
+    background: var(--blue-dark);
+    padding: 0.5rem 1rem;
+    color: var(--gray-100);
+    margin-left: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
