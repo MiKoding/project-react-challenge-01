@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray-400);
+    padding: 5rem;
+}   
+
+.header p + p{
+    margin-left: 45rem;
+}

@@ -4,7 +4,7 @@
     padding: 1rem;
 }
 .textarea textarea{
-    width: 80%;
+    width: 60%;
     text-align: center;
     background: var(--gray-500);
     border: solid var(--gray-700);
