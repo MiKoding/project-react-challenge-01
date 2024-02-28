@@ -2,13 +2,20 @@
     background: var(--gray-700);
     display: flex;
     justify-content: center;
-    padding: 1.25rem 0;
+    padding: 3rem 0;
     color: var(--purple);
     font-weight: 700;
     line-height: 200%;
+
 }
+
 .logo{
     display: flex;
+    height: 3rem;
+}
+
+.logo p{
+    font-size: 2rem;
 }
 .header img{
     margin-right:0.3rem;
@@ -17,3 +24,8 @@
 .header span{
     color: var(--blue);
 }
+
+.cadasterForm{
+    margin-top: calc(0px - 2rem - 6px);
+}
+
