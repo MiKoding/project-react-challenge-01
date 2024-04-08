@@ -26,6 +26,10 @@ function handleNewTaskInvalid(event: InvalidEvent<HTMLTextAreaElement>){
   event.target.setCustomValidity('Esse campo é obrigatório')
 }
 
+function onDeleteTask(task){
+  console.log(`Deletar task ${task}`)
+}
+
     return (
       <div>
        <form onSubmit={handleCreateNewTask} className={styles.textarea}>
@@ -55,9 +59,13 @@ function handleNewTaskInvalid(event: InvalidEvent<HTMLTextAreaElement>){
                     <p>Crie tarefas e organize seus itens a fazer</p>
                     </div>)
                  : (
-                    tasks.map(task => 
+                    tasks.map(task => {
+                      return (
+                        <div className={styles.taskListCard}> <TaskList key={task} content={task} check={true} onDeleteTask={task} /> </div>
+                      )
+                    }
                       
-                      <div className={styles.taskListCard}> <TaskList key={task} content={task} check={true}/> </div>
+                      
                     )
                  )
                  }    

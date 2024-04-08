@@ -1,20 +1,22 @@
 import { CheckCircle, RadioButton, Trash } from '@phosphor-icons/react'
 import styles from './TaskList.module.css'
-
-export interface TaskType{
+interface TaskListProps{
     content: string,
-    check: boolean
+    check: boolean,
+    onDeleteTask: (content: string) => void;
 }
+export function TaskList({content,check, onDeleteTask}: TaskListProps){
+    function handleDeleteTask(){
+        onDeleteTask(content);
+    }
 
-export function TaskList({content, check}: TaskType){
     return(
         <div className={styles.body}>
             <button className={styles.check}>
-            {check == false && <RadioButton size={30}/>}
-            {check == true && <CheckCircle size={30}/>}
+            {check === false ? <RadioButton size={30} /> : <CheckCircle size={30} />}
             </button>
             <p>{content}</p>
-            <button className= {styles.trash}>
+            <button onClick={handleDeleteTask} className= {styles.trash}>
             <Trash size={25}/>
             </button>
         </div>
