@@ -1,13 +1,24 @@
 
+import {v4 as uuidv4} from 'uuid'
 import { PlusCircle, Notebook } from "@phosphor-icons/react/dist/ssr"
 import styles from './SearchBox.module.css'
 import { FormEvent, useState, ChangeEvent, InvalidEvent } from "react"
 import TaskList  from "./TaskList"
+import { Check } from '@phosphor-icons/react'
 
 
 export function SearchBox(){
 
-const [tasks, setTasks] = useState(['pqp vai ficar provisório essa merda'])
+const [tasks, setTasks] = useState([{
+  id: uuidv4(),
+  content: 'primeira task',
+  check: true
+},
+{
+  id: uuidv4(),
+  content: 'primeira task',
+  check: true
+}])
 const [newTask, setNewTask] = useState('')
 
 function handleCreateNewTask(event: FormEvent){
@@ -26,8 +37,18 @@ function handleNewTaskInvalid(event: InvalidEvent<HTMLTextAreaElement>){
   event.target.setCustomValidity('Esse campo é obrigatório')
 }
 
-function onDeleteTask(task){
-  console.log(`Deletar task ${task}`)
+function onDeleteTask(taskToDelete: number){
+  const tasksWithoutDeletedOne = tasks.filter(task => {
+    return task !== taskToDelete;
+  })
+
+  setTasks(tasksWithoutDeletedOne);
+}
+
+function onCheckTask(taskToCheck: boolean){
+  const check = tasks.filter(task => {
+    task 
+  } )
 }
 
     return (
@@ -61,7 +82,14 @@ function onDeleteTask(task){
                  : (
                     tasks.map(task => {
                       return (
-                        <div className={styles.taskListCard}> <TaskList key={task} content={task} check={true} onDeleteTask={task} /> </div>
+                        <div className={styles.taskListCard}> 
+                        <TaskList key={task.id} 
+                        content={task.content} 
+                        check={task.check} 
+                        onDeleteTask={(task: number) => onDeleteTask(task)}
+                        onCheckTask={(task: boolean) => onCheckTask(task)}
+                        />
+                        </div>
                       )
                     }
                       
