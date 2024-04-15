@@ -1,32 +1,31 @@
 import { CheckCircle, RadioButton, Trash } from '@phosphor-icons/react'
 import styles from './TaskList.module.css'
+import { ITask } from './SearchBox';
 interface TaskListProps{
-    id: number
-    content: string,
-    check: boolean,
-    onDeleteTask: (id: number) => number;
-    onCheckTask: (check: boolean) => void;
+    data: ITask
+    handleDeleteTask: (id: string) => void;
+    handleCheckTask: ({id,value}: {id: string; value:boolean}) => void ;
 }
-export function TaskList({id,content,check, onDeleteTask, onCheckTask}: TaskListProps){
-    function handleDeleteTask(){
-        onDeleteTask(id);
+export function TaskList({data,handleDeleteTask, handleCheckTask}: TaskListProps){
+    function handleRemove(){
+        handleDeleteTask(data.id);
     }
 
     function handleCheckOrUncheck(){
-        if(check == true){
-            onCheckTask(false);
-        }else{
-            onCheckTask(true)
-        }
+       handleCheckTask({id: data.id, value: !data.check})
     }
+    
+    const paragraphCheckedClassname = data.check
+    ? styles['paragraph-checked']
+    : ''
 
     return(
         <div className={styles.body}>
             <button className={styles.check}>
-            {check === false ? <RadioButton size={30} onClick={handleCheckOrUncheck}/> : <CheckCircle size={30} onClick={handleCheckOrUncheck}/>}
+            {data.check === false ? <RadioButton size={30} onClick={handleCheckOrUncheck}/> : <CheckCircle size={30} onClick={handleCheckOrUncheck}/>}
             </button>
-            <p>{content}</p>
-            <button onClick={handleDeleteTask} className= {styles.trash}>
+            <p className={`${paragraphCheckedClassname}`}>{data.text}</p>
+            <button onClick={handleRemove} className= {styles.trash}>
             <Trash size={25}/>
             </button>
         </div>

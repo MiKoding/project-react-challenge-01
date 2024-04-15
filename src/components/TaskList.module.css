@@ -36,3 +36,8 @@
     transition: 0.3s;
     color: var(--danger);
 }
+
+.paragraph-checked {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
